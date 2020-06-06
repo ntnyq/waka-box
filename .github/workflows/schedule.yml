@@ -1,12 +1,17 @@
 name: Update gist with WakaTime stats
 on:
+  push:
+    branches:
+      - master
   schedule:
-    - cron: "0 0/2 * * *"
+    - cron: '0 0/2 * * *'
 jobs:
   update-gist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout code
+        uses: actions/checkout@master
+
       - name: Update gist
         uses: matchai/waka-box@master
         env:
